@@ -5,11 +5,18 @@
 A continuación se muestra la simulación del modelaod de un fotodiodo.
 ![Simulación Fotodiodo](fotodiodo.png "Título opcional")
 
-```bash
+```bash for synopsys
 setenv GIT_ROOT `git rev-parse --show-toplevel`
 setenv UVM_WORK $GIT_ROOT/work/uvm
 mkdir -p $UVM_WORK && cd $UVM_WORK
 ln -sf $GIT_ROOT/hw/Makefile/Makefile.xrun Makefile
+```
+
+``` bash for vivado
+export GIT_ROOT=$(git rev-parse --show-toplevel)
+export UVM_WORK="$GIT_ROOT/work/uvm"
+mkdir -p work/uvm && cd work/uvm
+ln -sf $GIT_ROOT/hw/Makefile/Makefile.vivado Makefile 
 ```
 
 ### Makefile

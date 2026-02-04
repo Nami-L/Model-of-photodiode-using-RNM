@@ -23,4 +23,19 @@ logic clk;
     vin = 0.0;
     #30000 $finish;
   end
+
+  integer file;
+initial begin
+    file = $fopen("simulation_results.csv", "w");
+    $fdisplay(file, "time,vin,vout"); // Encabezado
+    
+    forever begin
+        @(vout or vin); // Cada que cambie una señal
+        $fdisplay(file, "%t,%f,%f", $realtime, vin, vout);
+    end
+end
+
+final begin
+    $fclose(file);
+end
 endmodule
